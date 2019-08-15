@@ -9,7 +9,7 @@
                 <el-input type="password" v-model="ruleForm.password"></el-input> <!--autocomplete="off-->
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+                <el-button type="primary" @click="submitForm('ruleForm')" @keyup.enter="handleAddBook">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -57,7 +57,24 @@
                 }
             }
         },
+        created(){
+            this.keyupEnter()
+        },
         methods: {
+            keyupEnter(){
+                document.onkeydown = e =>{
+                    let body = document.getElementsByTagName('body')[0]
+                    if (e.keyCode === 13 && e.target === body) { //  e.target.baseURI.match(/inputbook/) &&
+                        console.log('enter')
+                        this.submitForm()
+                    }
+                }
+            },
+            handleAddBook(){
+                if(this.validate()){
+                    this.submitForm()
+                }
+            },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
@@ -69,12 +86,19 @@
                 })
             },
             encryptpub(v) {
+//                 let pubK = `-----BEGIN PUBLIC KEY-----
+// MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDn5Yn0vWX1Fr3OwbQWqHgRxG4N
+// 6AHKU16Ad4+uy5vw7PSJRce6sR8cte0HW0KOv7nvl+bBBrs3gpMenUdkmN+HjkQB
+// UlyKVfmFSNvoTpEcdn2vu2URjMoRCVEfza/ry9nI6MgsVHGZmOof/t1NofHVoLQk
+// i55wN6/bNeOnBRGsXQIDAQAB
+// -----END PUBLIC KEY-----`
                 let pubK = `-----BEGIN PUBLIC KEY-----
-MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDn5Yn0vWX1Fr3OwbQWqHgRxG4N
-6AHKU16Ad4+uy5vw7PSJRce6sR8cte0HW0KOv7nvl+bBBrs3gpMenUdkmN+HjkQB
-UlyKVfmFSNvoTpEcdn2vu2URjMoRCVEfza/ry9nI6MgsVHGZmOof/t1NofHVoLQk
-i55wN6/bNeOnBRGsXQIDAQAB
------END PUBLIC KEY-----`
+                            MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCXrYqCy3fYvwoSNBZ9q0xc6EVx
+                            lGTQWr9hm1hrpCCid1/C+kX2sZlT1YJo+IZ47KaY+tN+sEXujTugWT7BJzz44bv2
+                            NUELZCEoNCsHpXsGJh0FzGcJSscg7W1ZBQmRcdHX/zhUNcOodnQIkfXw7ebqAHi2
+                            B8mc3VwH8IqqwRLUuwIDAQAB
+                            -----END PUBLIC KEY-----
+                            `
                 let en = new JSEncrypt()
                 en.setPublicKey(pubK)
                 return en.encrypt(v)
@@ -95,9 +119,16 @@ i55wN6/bNeOnBRGsXQIDAQAB
                 //     },
                 // }
                 this.PF('/login', param, {}).then((response) => {
-                    console.log(response)
+                    let res = response.data
+                    if (res.code === 0){
+                        // alert("abc123")
+                        this.jump("/operation")
+                    }else{
+                        this.$elementMessage(res.msg,"warning")
+                    }
                 }).catch(function (error) {
                     console.log(error)
+                    this.$elementMessage('网络繁忙，请稍后再试',"error")
                 })
             }
         }
