@@ -6,10 +6,10 @@
                 <el-input v-model="ruleForm.username"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="ruleForm.password"></el-input> <!--autocomplete="off-->
+                <el-input type="password" v-model="ruleForm.password" @keyup.enter="keyupEnter"></el-input> <!--autocomplete="off-->
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm')" @keyup.enter="handleAddBook">登录</el-button>
+                <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -64,17 +64,16 @@
             keyupEnter(){
                 document.onkeydown = e =>{
                     let body = document.getElementsByTagName('body')[0]
-                    if (e.keyCode === 13 && e.target === body) { //  e.target.baseURI.match(/inputbook/) &&
-                        console.log('enter')
-                        this.submitForm()
+                    if (e.keyCode === 13) { //  e.target.baseURI.match(/inputbook/) &&  && e.target === body
+                        this.submitForm('ruleForm')
                     }
                 }
             },
-            handleAddBook(){
-                if(this.validate()){
-                    this.submitForm()
-                }
-            },
+            // handleAddBook(){
+            //     if(this.validate()){
+            //         this.submitForm()
+            //     }
+            // },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
