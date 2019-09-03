@@ -69,11 +69,6 @@
                     }
                 }
             },
-            // handleAddBook(){
-            //     if(this.validate()){
-            //         this.submitForm()
-            //     }
-            // },
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {

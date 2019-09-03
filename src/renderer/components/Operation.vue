@@ -1,7 +1,19 @@
 <template>
     <div class="el-container">
         <el-container direction="vertical">
-            <el-header>Header</el-header>
+            <el-header>
+                <div style="float:right;">
+                    <el-dropdown>
+                        <span class="el-dropdown-link">
+                            个人信息<i class="el-icon-arrow-down el-icon--right"></i>
+                        </span>
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item>修改密码</el-dropdown-item>
+                            <el-dropdown-item @click="loginout">退出</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </el-dropdown>
+                </div>
+            </el-header>
             <el-container>
                 <transition name="fade" mode="out-in">
                     <el-aside width="100px" v-if="show">Aside</el-aside>
@@ -29,28 +41,31 @@
 </template>
 
 <script>
-  import tableOperation from './Operation/TableOperation'
+    import tableOperation from './Operation/TableOperation'
 
-  export default {
-    name: 'Operation',
-    components: {tableOperation},
-    data () {
-      return {
-        show: true,
-        activeName: '1',
-        ruleForm: {},
-        dbList: ['1', '2', '3', '4', '5']
-      }
-    },
-    methods: {
-      handleClick (tab, event) {
-        console.log(tab, event)
-      },
-      submitForm (formName) {
+    export default {
+        name: 'Operation',
+        components: {tableOperation},
+        data() {
+            return {
+                show: true,
+                activeName: '1',
+                ruleForm: {},
+                dbList: ['1', '2', '3', '4', '5']
+            }
+        },
+        methods: {
+            handleClick(tab, event) {
+                console.log(tab, event)
+            },
+            submitForm(formName) {
 
-      }
+            },
+            loginout(){
+
+            }
+        }
     }
-  }
 </script>
 
 <style lang="scss">
