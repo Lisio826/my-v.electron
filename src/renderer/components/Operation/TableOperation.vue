@@ -67,86 +67,86 @@
 </template>
 
 <script>
-  export default {
-    name: 'TableOperation',
-    data () {
-      return {
-        filterText: '',
-        tableNameData: [{
-          date: '2016-05-02'
-        }, {
-          date: '2017-07-12'
-        }],
-        tableInfo: [{
-          name: '商品名称',
-          field: 'name'
-        }, {
-          name: '所属店铺',
-          field: 'shop'
-        }, {
-          name: '商品 ID',
-          field: 'id'
-        }, {
-          name: '店铺 ID',
-          field: 'shopId'
-        }, {
-          name: '商品分类',
-          field: 'category'
-        }, {
-          name: '店铺地址',
-          field: 'address'
-        }, {
-          name: '商品描述',
-          field: 'desc'
-        }],
-        iii: [{
-          name: '商品名称',
-          field: 'name'
-        }, {
-          name: '商品 ID',
-          field: 'id'
-        }, {
-          name: '商品描述',
-          field: 'desc'
-        }],
-        tableData: [{
-          id: '12987122',
-          name: '好滋好味鸡蛋仔',
-          category: '江浙小吃、小吃零食',
-          desc: '荷兰优质淡奶，奶香浓而不腻',
-          address: '上海市普陀区真北路',
-          shop: '王小虎夫妻店',
-          shopId: '10333'
-        }],
-        textarea: '',
-        data: [{
-          id: 1,
-          label: '一级 1'
-        }, {
-          id: 2,
-          label: '一级 2'
-        }, {
-          id: 3,
-          label: '一级 3'
-        }],
-        defaultProps: {
-          children: 'children',
-          label: 'label'
+    export default {
+        name: 'TableOperation',
+        data() {
+            return {
+                filterText: '',
+                tableNameData: [{
+                    date: '2016-05-02'
+                }, {
+                    date: '2017-07-12'
+                }],
+                tableInfo: [{
+                    name: '商品名称',
+                    field: 'name'
+                }, {
+                    name: '所属店铺',
+                    field: 'shop'
+                }, {
+                    name: '商品 ID',
+                    field: 'id'
+                }, {
+                    name: '店铺 ID',
+                    field: 'shopId'
+                }, {
+                    name: '商品分类',
+                    field: 'category'
+                }, {
+                    name: '店铺地址',
+                    field: 'address'
+                }, {
+                    name: '商品描述',
+                    field: 'desc'
+                }],
+                iii: [{
+                    name: '商品名称',
+                    field: 'name'
+                }, {
+                    name: '商品 ID',
+                    field: 'id'
+                }, {
+                    name: '商品描述',
+                    field: 'desc'
+                }],
+                tableData: [{
+                    id: '12987122',
+                    name: '好滋好味鸡蛋仔',
+                    category: '江浙小吃、小吃零食',
+                    desc: '荷兰优质淡奶，奶香浓而不腻',
+                    address: '上海市普陀区真北路',
+                    shop: '王小虎夫妻店',
+                    shopId: '10333'
+                }],
+                textarea: '',
+                data: [{
+                    id: 1,
+                    label: '一级 1'
+                }, {
+                    id: 2,
+                    label: '一级 2'
+                }, {
+                    id: 3,
+                    label: '一级 3'
+                }],
+                defaultProps: {
+                    children: 'children',
+                    label: 'label'
+                }
+            }
+        },
+        watch: {
+            filterText(val) {
+                this.$refs.tree.filter(val)
+            }
+        },
+        methods: {
+            filterNode(value, data) {
+                if (!value) return true
+                return data.label.indexOf(value) !== -1
+            }
         }
-      }
-    },
-    watch: {
-      filterText (val) {
-        this.$refs.tree.filter(val)
-      }
-    },
-    methods: {
-      filterNode (value, data) {
-        if (!value) return true
-        return data.label.indexOf(value) !== -1
-      }
     }
-  }
 </script>
 
 <style lang="scss">
@@ -167,3 +167,5 @@
         width: 100%; /* 50% */
     }
 </style>
+
+
