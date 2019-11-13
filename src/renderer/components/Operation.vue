@@ -3,13 +3,13 @@
         <el-container direction="vertical">
             <el-header>
                 <div style="float:right;">
-                    <el-dropdown>
+                    <el-dropdown @command="selfCommand">
                         <span class="el-dropdown-link">
                             个人信息<i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>修改密码</el-dropdown-item>
-                            <el-dropdown-item @click="loginout">退出</el-dropdown-item>
+                            <el-dropdown-item command="updatePwd">修改密码</el-dropdown-item>
+                            <el-dropdown-item command="loginout">退出</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
@@ -61,8 +61,13 @@
             submitForm(formName) {
 
             },
-            loginout(){
+            selfCommand(command) {
+                if (command == 'loginout') {
+                    this.jump("/login")
+                }
+                if (command == 'updatePwd') {
 
+                }
             }
         }
     }
