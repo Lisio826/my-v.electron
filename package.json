@@ -17,10 +17,13 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "test": "npm run unit && npm run e2e",
     "unit": "karma start test/unit/karma.conf.js",
+    "package": "electron-package . dbmarage --win --out ../my-v.electron --arch=x64 --electron-version=1.0.0 --overwrite --ignore=node_module",
+    "builder64": "electron-builder --win",
+    "builder32": "electron-builder --ia32",
     "postinstall": ""
   },
   "build": {
-    "productName": "my-project",
+    "productName": "myDBM",
     "appId": "com.example.yourapp",
     "directories": {
       "output": "build"
@@ -43,11 +46,28 @@
         }
       ]
     },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./build/icons/aaa.ico",
+      "uninstallerIcon": "./build/icons/bbb.ico",
+      "installerHeaderIcon": "./build/icons/aaa.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "xxxx",
+      "include": "build/script/installer.nsh"
+    },
     "mac": {
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/icon.ico",
+      "target": [
+        {
+          "target": "portable"
+        }
+      ]
     },
     "linux": {
       "icon": "build/icons"

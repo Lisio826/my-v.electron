@@ -1,5 +1,8 @@
 # my-project
-
+# electron-builder https://blog.csdn.net/hr541659660/article/details/78731394 
+# electron-builder https://github.com/QDMarkMan/CodeBlog/blob/master/Electron/electron-builder%E6%89%93%E5%8C%85%E8%AF%A6%E8%A7%A3.md
+# https://www.cnblogs.com/leejay6567/p/10092962.html
+# 隐藏软件名称：https://segmentfault.com/a/1190000012904543
 > An electron-vue project
 
 #### Build Setup
@@ -17,6 +20,9 @@ npm run build
 # run unit & end-to-end tests
 npm test
 
+# electron
+https://electron.org.cn/vue/index.html
+https://github.com/SimulatedGREG/electron-vue
 
 ```
 

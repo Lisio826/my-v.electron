@@ -16,7 +16,7 @@ Vue.use(ElementUI, axios)
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$axios = axios
 Vue.config.productionTip = false
-Vue.prototype.$elementMessage = function (msg,type) {
+Vue.prototype["$elementMessage"] = function (msg, type) {
   this.$message({
     showClose: true,
     message: msg,
