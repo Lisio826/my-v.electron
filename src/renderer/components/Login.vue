@@ -44,8 +44,8 @@
             return {
                 labelPosition: 'right',
                 ruleForm: {
-                    password: '',
-                    username: ''
+                    password: 'abc123',
+                    username: 'admin'
                 },
                 rules: {
                     username: [
@@ -99,7 +99,7 @@
             },
             doLogin() {
                 let param = {
-                    userName: this.encryptpub(this.ruleForm.username),
+                    account: this.encryptpub(this.ruleForm.username),
                     userPwd: this.encryptpub(this.ruleForm.password)
                 }
                 // let fromparam = new FormData();

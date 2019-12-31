@@ -38,8 +38,8 @@
             <div>
                 <el-input
                         type="textarea"
-                        :autosize="{ minRows: 1, maxRows: 6}"
-                        placeholder="请输入SQL内容"
+                        :autosize="{ minRows: 2, maxRows: 10}"
+                        placeholder="请输入SQL语句"
                         v-model="textarea">
                 </el-input>
             </div>
