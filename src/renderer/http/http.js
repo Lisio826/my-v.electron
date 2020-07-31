@@ -27,7 +27,8 @@ this.$axios.interceptors.request.use(
     return Promise.reject(err)
   }
 )
-export function get (url, params = {}) {
+
+export function get(url, params = {}) {
   return new Promise((resolve, reject) => {
     this.$axios.get(url, {
       params: params
@@ -40,7 +41,8 @@ export function get (url, params = {}) {
       })
   })
 }
-export function post (url, params = {}) {
+
+export function post(url, params = {}) {
   return new Promise((resolve, reject) => {
     this.$axios.post(url, params)
       .then(response => {
@@ -50,6 +52,7 @@ export function post (url, params = {}) {
       })
   })
 }
+
 const downloadUrl = url => {
   let iframe = document.createElement('iframe')
   iframe.style.display = 'none'

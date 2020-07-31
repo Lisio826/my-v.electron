@@ -1,6 +1,6 @@
 const _baseURL_ = 'http://127.0.0.1:9080/v1/home'
 
-function jump (to, v) {
+function jump(to, v) {
   if (v.$router) {
     v.$router.push(to, function () {
     }, function () {
@@ -10,7 +10,7 @@ function jump (to, v) {
   }
 }
 
-function go (n, v) {
+function go(n, v) {
   if (v.$router) {
     v.$router.go(n)
   } else {
@@ -18,7 +18,7 @@ function go (n, v) {
   }
 }
 
-function objToStrMap (obj) {
+function objToStrMap(obj) {
   let strMap = new Map()
   for (let k of Object.keys(obj)) {
     strMap.set(k, obj[k])
@@ -26,7 +26,7 @@ function objToStrMap (obj) {
   return strMap
 }
 
-function strMapToObj (strMap) {
+function strMapToObj(strMap) {
   let obj = Object.create(null)
   for (let [k, v] of strMap) {
     obj[k] = v
@@ -35,7 +35,7 @@ function strMapToObj (strMap) {
 }
 
 // options axios的options
-function PF (v, url, data, options = {}) {
+function PF(v, url, data, options = {}) {
   if (url === false) {
     return false
   }
@@ -92,7 +92,7 @@ function PF (v, url, data, options = {}) {
  * @param {Boolean} caseSensitive
  * @return {Number} hashCode
  */
-function getHashCode (str, caseSensitive) {
+function getHashCode(str, caseSensitive) {
   if (!caseSensitive) {
     str = str.toLowerCase()
   }
@@ -121,7 +121,7 @@ export default {
     baseURL: function () {
       return _baseURL_
     },
-    getHashCode (str, caseSensitive) {
+    getHashCode(str, caseSensitive) {
       return getHashCode(str, caseSensitive)
     }
   }
